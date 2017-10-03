@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="lab.Controllers.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="538.0" prefWidth="793.0">
+         <children>
+            <JFXButton layoutX="554.0" layoutY="49.0" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #00c853;" text="Cargar XML" />
+            <TableView layoutX="132.0" layoutY="123.0" prefHeight="292.0" prefWidth="529.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <JFXButton layoutX="632.0" layoutY="472.0" text="INICIAR" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
