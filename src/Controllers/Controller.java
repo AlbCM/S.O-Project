@@ -1,4 +1,4 @@
-package lab.Controllers;
+package Controllers;
 
 public class Controller {
 
