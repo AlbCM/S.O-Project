@@ -1,2 +1,10 @@
 out/
 .idea/
+ProcessLab.iml
+build.xml
+build/
+dist/
+manifest.mf
+nbproject/
+
+
