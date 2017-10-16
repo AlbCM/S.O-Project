@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('/Fonts/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/Fonts/Roboto.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/Fonts/Lato-Regular.ttf');
+}
+
+
+*{
+    -fx-font-family: 'Roboto';
+    -fx-text-fill: #FFFFFF;
+
+}
+
+.raleway-font {
+     -fx-font-family: "Raleway";
+}
+
+#titulo {
+    -fx-graphic-size: 12;
+}
+
+.menu:hover,
+.menu:showing, /* selects Menu in MenuBar, if shown */
+.menu-item:focused {
+    -fx-background-color: #f44336;
+}
+
+#title:hover,
+#title:showing, /* selects Menu in MenuBar, if shown */
+#title:focused {
+    -fx-background-color: transparent;
+}
+
+
+#tittle {
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 13;
+}
+
+.context-menu {
+    -fx-background-color:  #C20114;    
+}
+
+
+.jfx-list-cell {
+    -fx-background-color: #c20114;
+}
+
+.list-view {
+    -fx-background-color: #c20114;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+}
+
+.cell-renderer-changed {
+    -fx-background-color: #c20114;
+}
+
+.mylistview .scroll-bar:horizontal .track,
+.mylistview .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+
+.mylistview .scroll-bar:horizontal .increment-button ,
+.mylistview .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+}
+
+.mylistview .scroll-bar:vertical .increment-button ,
+.mylistview .scroll-bar:vertical .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+}
+.mylistview  .scroll-bar .increment-arrow,
+.mylistview  .scroll-bar .decrement-arrow{
+    -fx-shape:" ";
+    -fx-padding:0;
+}
+
+.mylistview .scroll-bar:horizontal .thumb,
+.mylistview .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+/* Esto es lo que estoy usando para la tablita */
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #0C120C;;
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #0C120C;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-background-color: #0C120C;
+    -fx-border-color: #0C120C;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header .label {
+
+}

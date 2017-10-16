@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--0C120C -->
+
+<GridPane alignment="center" hgap="10" style="-fx-background-color: #0C120C;" styleClass="label" stylesheets="@styles/main.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="525.0" prefWidth="743.0">
+         <children>
+            <MenuBar layoutY="31.0" prefHeight="33.0" prefWidth="743.0" style="-fx-background-color: #C20114;" stylesheets="@styles/main.css">
+              <menus>
+                <Menu mnemonicParsing="false" text="Procesos">
+                    <graphic>
+                        <SVGPath content="M17,17H7V7H17M21,11V9H19V7C19,5.89 18.1,5 17,5H15V3H13V5H11V3H9V5H7C5.89,5 5,5.89 5,7V9H3V11H5V13H3V15H5V17A2,2 0 0,0 7,19H9V21H11V19H13V21H15V19H17A2,2 0 0,0 19,17V15H21V13H19V11M13,13H11V11H13M15,9H9V15H15V9Z" scaleX="0.75" scaleY="0.75" style="-fx-fill: white; -fx-graphic-size: 12;" />
+                    </graphic>
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#showNewProcessModal" text="Crear">
+                        <graphic>
+                            <SVGPath content="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" scaleX="0.7" scaleY="0.7" style="-fx-fill: white; -fx-graphic-size: 12;" />
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem mnemonicParsing="false" onAction="#importXML" text="Importar">
+                        <graphic>
+                            <SVGPath content="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" scaleX="0.7" scaleY="0.7" style="-fx-fill: white; -fx-graphic-size: 12;" />
+                        </graphic>
+                    </MenuItem>
+
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reportes">
+                    <graphic>
+                        <SVGPath content="M7,13H21V11H7M7,19H21V17H7M7,7H21V5H7M2,11H3.8L2,13.1V14H5V13H3.2L5,10.9V10H2M3,8H4V4H2V5H3M2,17H4V17.5H3V18.5H4V19H2V20H5V16H2V17Z" scaleX="0.75" scaleY="0.75" style="-fx-fill: white; -fx-graphic-size: 12;" />
+                    </graphic>
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Procesos definidos por el usuario" />
+                        <MenuItem mnemonicParsing="false" text="Procesos de igual tiempo de finalizacion" />
+                        <MenuItem mnemonicParsing="false" text="5 Menores tiempos de finalizacion" />
+                        <MenuItem mnemonicParsing="false" text="Orden de terminación de todos los procesos" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Graficos">
+                    <graphic>
+                        <SVGPath content="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" scaleX="0.75" scaleY="0.75" style="-fx-fill: white; -fx-graphic-size: 12;" />
+                    </graphic>
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Grafico de barra para los 5 mayores tiempos de finalizacion" />
+                        <MenuItem mnemonicParsing="false" text="Grafico de barra para los 5 menores tiempos de finalizacion" />
+                  </items>
+                </Menu>
+              </menus>
+               <styleClass>
+                  <String fx:value="menu-item" />
+                  <String fx:value="context-menu" />
+               </styleClass>
+            </MenuBar>
+            <JFXButton fx:id="StartButton" buttonType="RAISED" layoutX="605.0" layoutY="474.0" onAction="#beginScheduling" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #C51D34;" text="INICIAR" textFill="WHITE">
+               <graphic>
+                  <SVGPath content="M8,5.14V19.14L19,12.14L8,5.14Z" fill="WHITE" />
+               </graphic></JFXButton>
+            <MenuBar id="tittle" layoutY="-2.0" prefHeight="33.0" prefWidth="743.0" style="-fx-background-color: #C20114;" styleClass="menu-item" stylesheets="@styles/main.css">
+               <menus>
+                  <Menu id="titulo" mnemonicParsing="false" style="-fx-font-size: 15;" text="ProcessLab">
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <TableView fx:id="processTable" layoutX="64.0" layoutY="90.0" prefHeight="363.0" prefWidth="615.0" style="-fx-bac¡kground-color: #000000;">
+              <columns>
+                  <TableColumn fx:id="PidColumn" editable="false" prefWidth="75.0" sortable="false" style="-fx-text-alignment: left;" text="Pid" />
+                <TableColumn fx:id="NameColumn" editable="false" prefWidth="231.0" sortable="false" text="Nombre" />
+                  <TableColumn fx:id="QuantumColumn" editable="false" prefWidth="72.0" sortable="false" text="Quantum" />
+                  <TableColumn fx:id="SourceFileColumn" editable="false" prefWidth="282.0" sortable="false" text="Archivo Origen" />
+              </columns>
+            </TableView>
+            <Text fx:id="MessageLabel" fill="WHITE" layoutX="14.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Roboto;" text="Para empezar agrega o importa un proceso">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

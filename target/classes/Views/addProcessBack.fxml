@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="377.0" style="-fx-background-color: #0C120C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="250.0" prefWidth="428.0" styleClass="menu-item">
+         <children>
+            <JFXButton layoutX="251.0" layoutY="207.0" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #C20114;" styleClass="label" stylesheets="@styles/main.css" text="INICIAR" />
+            <Label layoutX="22.0" layoutY="103.0" prefHeight="17.0" prefWidth="98.0" text="Quantum" />
+            <JFXTextField layoutX="128.0" layoutY="35.0" prefHeight="25.0" prefWidth="188.0" />
+            <Label layoutX="22.0" layoutY="47.0" prefHeight="17.0" prefWidth="98.0" text="Nombre" />
+            <JFXTextField layoutX="128.0" layoutY="86.0" prefHeight="25.0" prefWidth="188.0" />
+            <Label layoutX="18.0" layoutY="163.0" prefHeight="17.0" prefWidth="107.0" text="Archivo origen" />
+            <JFXTextField fx:id="SourceFileEntry" editable="false" layoutX="128.0" layoutY="146.0" prefHeight="25.0" prefWidth="188.0" />
+            <JFXButton contentDisplay="CENTER" ellipsisString="" layoutX="328.0" layoutY="154.0" onAction="#pickFile" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #C20114;" styleClass="label" stylesheets="@styles/main.css" text=" ..." textAlignment="RIGHT" textOverrun="CLIP" />
+         </children>
+         <stylesheets>
+            <URL value="@styles/main.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</GridPane>

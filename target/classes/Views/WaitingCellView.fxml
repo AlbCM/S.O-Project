@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="79.0" style="-fx-background-color: #DC552C;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="22.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label fx:id="name" prefHeight="18.0" style="-fx-font-size: 12;" text="Label" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" />
+      <Label fx:id="pid" style="-fx-font-size: 10;" text="Label" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label fx:id="quantum" style="-fx-font-size: 10;" text="Label" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label fx:id="Executions" style="-fx-font-size: 10;" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+   </children>
+   <styleClass>
+      <String fx:value="jfx-list-cell" />
+      <String fx:value="mylistview" />
+   </styleClass>
+</GridPane>

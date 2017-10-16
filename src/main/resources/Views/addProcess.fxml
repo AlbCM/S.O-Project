@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="357.0" style="-fx-background-color: #0C120C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="287.0" prefWidth="361.0" styleClass="menu-item">
+         <children>
+            <JFXButton
+                    layoutX="241.0"
+                    layoutY="232.0"
+                    prefHeight="25.0"
+                    prefWidth="98.0"
+                    style="-fx-background-color: #C20114;"
+                    styleClass="label" stylesheets="@styles/main.css"
+                    text="AGREGAR"
+                    onAction="#saveProcess"
+                    fx:id="SaveButton"
+            />
+            <JFXTextField fx:id="NameEntry" layoutX="31.0" layoutY="35.0" prefHeight="25.0" prefWidth="285.0" />
+            <JFXTextField fx:id="QuantumEntry" layoutX="31.0" layoutY="97.0" prefHeight="25.0" prefWidth="285.0" />
+            <JFXTextField fx:id="SourceFileEntry" editable="false" layoutX="31.0" layoutY="170.0" prefHeight="25.0" prefWidth="264.0" />
+            <JFXButton
+                    contentDisplay="CENTER"
+                    ellipsisString=""
+                    layoutX="306.0"
+                    layoutY="183.0"
+                    onAction="#pickFile"
+                    prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #C20114;" styleClass="label" stylesheets="@styles/main.css" text=" ..." textAlignment="RIGHT" textOverrun="CLIP" />
+         </children>
+         <stylesheets>
+            <URL value="@styles/main.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</GridPane>
