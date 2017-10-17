@@ -110,6 +110,7 @@ public class ViewController implements Initializable {
                 // Está en listo y debe pasar a ejecución
                 service.Ready.remove(p);
                 ((MySkin) Waiting.getSkin()).refresh();
+                ((MySkin) Ready.getSkin()).refresh();
             }
             else {
                 // Esta en espera y pasa a listo
@@ -144,6 +145,7 @@ public class ViewController implements Initializable {
             }
             else{
                 service.Finished.add(p);
+                ((MySkin) Finished.getSkin()).refresh();
             }
 
             System.out.println("Process " + p.getProcessName() + " finished");
@@ -156,13 +158,13 @@ public class ViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Ready.setCellFactory(itemListView -> new ReadyCellView());
-        //Ready.setSkin(new MySkin(this.Ready));
+        Ready.setSkin(new MySkin(this.Ready));
         Executing.setCellFactory(itemListView -> new ExecutingCellView());
         Executing.setSkin(new MySkin(this.Executing));
         Waiting.setCellFactory(itemListView -> new WaitingCellView());
         Waiting.setSkin(new MySkin(this.Waiting));
         Finished.setCellFactory(itemListView -> new FinishedCellView());
-        //Finished.setSkin(new MySkin(this.Finished));
+        Finished.setSkin(new MySkin(this.Finished));
 
         Ready.setItems(service.Ready);
         Executing.setItems(service.Executing);
