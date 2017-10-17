@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXDecorator;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.IntegerProperty;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,11 +60,26 @@ public class MainController implements Initializable {
         File xml = pickXMLFile();
         if(xml != null){
             List<Process> data = deserializeXML(xml);
-            // Add list to TableView
-            service.Ready.addAll(data);
+            data.forEach( (p) -> {
+                if(service.Ready.isEmpty()){
+                    p.setArrivalTime(0);
+                }
+                else {
+                    int last_time = service.Ready.get(service.Ready.size() - 1).getArrivalTime();
+                    p.setArrivalTime(last_time + 1);
+                }
+                service.Ready.add(p);
+            });
         }
 
 
+    }
+
+    public void reset(){
+        service.Ready.clear();
+        service.Waiting.clear();
+        service.Finished.clear();
+        service.Executing.clear();
     }
 
     public void beginScheduling() throws IOException, InterruptedException {
@@ -96,8 +112,64 @@ public class MainController implements Initializable {
         stage.setTitle("ABC");
         stage.setScene(scene);
         stage.show();
+
+        SortedList<Process>  list = service.Ready.sorted();
     }
 
+    public void plotChartLT() throws IOException {
+        plot(1);
+    }
+
+    public void plotChartST() throws IOException {
+        plot(2);
+    }
+    public void plot (int option) throws IOException{
+        // Load FXML View
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/chartLongerTime.fxml"));
+        fxmlLoader.setController(new ChartLongerTime(option));
+        Parent root1 = fxmlLoader.load();
+
+        Stage stage = new Stage();
+        JFXDecorator decorator = new JFXDecorator(stage, root1);
+        Scene scene = new Scene(decorator);
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void report(int option) throws IOException {
+        // Load FXML View
+        FXMLLoader fxmlLoader = new FXMLLoader(ChartLongerTime.class.getResource("/Views/report.fxml"));
+        fxmlLoader.setController(new ReportController(option));
+        Parent root1 = (Parent) fxmlLoader.load();
+
+        Stage stage = new Stage();
+        JFXDecorator decorator = new JFXDecorator(stage, root1);
+        Scene scene = new Scene(decorator);
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void processDefined() throws IOException {
+        report(1);
+    }
+    public void sameEndingtime() throws IOException {
+        report(2);
+    }
+
+    public void shorterTime() throws IOException {
+        report(3);
+    }
+
+    public void finishOrder() throws IOException {
+        report(4);
+    }
 
     /* Helpers */
     public File pickXMLFile() {

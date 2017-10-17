@@ -52,7 +52,15 @@ public class AddController implements Initializable {
         process.setQuantum(Integer.parseInt(QuantumEntry.getText()));
         process.setSourceFile(SourceFileEntry.getText());
         process.setPid(String.valueOf(process.getId()));
+        if(service.Ready.isEmpty()){
+            process.setArrivalTime(0);
+        }
+        else {
+            int last_time = service.Ready.get(service.Ready.size() - 1).getArrivalTime();
+            process.setArrivalTime(last_time + 1);
+        }
         service.Ready.add(process);
+
         // Close this window.
         Stage stage = (Stage) SaveButton.getScene().getWindow();
         stage.close();

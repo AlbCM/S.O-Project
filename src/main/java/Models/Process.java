@@ -13,6 +13,7 @@ import java.io.*;
 public class Process extends Thread {
 
 
+    // Properties
     @JacksonXmlProperty(localName = "Name")
     private StringProperty processName = new SimpleStringProperty();
 
@@ -27,16 +28,12 @@ public class Process extends Thread {
 
     private IntegerProperty executions = new SimpleIntegerProperty(0);
 
+    private IntegerProperty arrivalTime = new SimpleIntegerProperty(0);
+
+
+    // Attributes
     public boolean finished = false;
-
-    public volatile boolean active = false;
-
     private DataService service = DataService.getInstance();
-
-
-    public Process(){
-
-    }
 
     // Properties methods
 
@@ -54,6 +51,9 @@ public class Process extends Thread {
     }
     public IntegerProperty executionsProperty(){
         return executions;
+    }
+    public IntegerProperty arrivalTimeProperty() {
+        return arrivalTime;
     }
 
     // Getters and Setters
@@ -87,80 +87,15 @@ public class Process extends Thread {
     public void setExecutions(int executions) {
         this.executions.set(executions);
     }
-    public boolean isActive() {
-        return active;
+    public int getArrivalTime() {
+        return arrivalTime.get();
+    }
+    public void setArrivalTime(int arrivalTime) {
+        this.arrivalTime.set(arrivalTime);
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    @Override
-    public void run() {
-        try {
-            if (getExecutions() == 0) { // Está en listo y debe pasar a ejecución
-                service.Ready.remove(this);
-                this.sleep(200);
-                service.Executing.add(this);
-            } else {
-                // Esta en espera y pasa a listo
-                service.Ready.remove(this);
-                this.sleep(200);
-                service.Executing.add(this);
-            }
-
-            //
-            readAndWrite(this);
-
-            this.sleep(1000);
-            setExecutions(getExecutions() + 1);
-
-
-            service.Ready.add(this);
-            Thread.sleep(200);
-            service.Executing.remove(this);
-
-        } catch (IOException e) {
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public void readAndWrite(Process p) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(p.getSourceFile()));
-        File source = new File(p.getSourceFile());
-        String OutputFile = source.getParent().concat("/" + p.getPid() + ".txt");
-        File output = new File(OutputFile);
-        BufferedWriter writer;
-        if (p.getExecutions() == 0 && output.exists()) {
-            writer = new BufferedWriter(new FileWriter(OutputFile, false));
-        } else {
-            writer = new BufferedWriter(new FileWriter(OutputFile, true));
-        }
-
-        int tam = p.getQuantum() * 5;
-        char[] buffer = new char[tam];
-
-        int readCharacters = tam * p.getExecutions();
-        for (int i = 0; i < readCharacters; i++) {
-            reader.read();
-        }
-
-        if (reader.ready()) {
-            reader.read(buffer);
-            for (int i = 0; i < tam; i++) {
-                if (buffer[i] != Character.MIN_VALUE) {
-                    writer.write(buffer[i]);
-                }
-            }
-
-        } else {
-            finished = true;
-        }
-        writer.close();
-        reader.close();
+    public int ExecutionTime(){
+        return getExecutions() * getQuantum();
     }
 
 }
