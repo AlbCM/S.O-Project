@@ -171,6 +171,20 @@ public class MainController implements Initializable {
         report(4);
     }
 
+    public void showCredentials() throws IOException {
+        // Load fxml view
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/about.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        JFXDecorator decorator = new JFXDecorator(stage, root1);
+        Scene scene = new Scene(decorator);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     /* Helpers */
     public File pickXMLFile() {
         fileChooser = new FileChooser();

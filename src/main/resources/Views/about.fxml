@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="357.0" style="-fx-background-color: #0C120C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="170.0" prefWidth="357.0" styleClass="menu-item">
+         <stylesheets>
+            <URL value="@styles/main.css" />
+         </stylesheets>
+         <children>
+            <Label layoutX="59.0" layoutY="25.0" prefHeight="17.0" prefWidth="255.0" text="ProcessLab 1.0" textAlignment="CENTER" textFill="WHITE" />
+            <SVGPath content="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" fill="WHITE" layoutX="25.0" layoutY="22.0" />
+            <Text fill="WHITE" layoutX="27.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desarrollado por:" wrappingWidth="303.21875" />
+            <Label layoutX="28.0" layoutY="94.0" text="Sebastian Andres Arteaga Diaz" textFill="WHITE" />
+            <Label layoutX="28.0" layoutY="118.0" text="Albeiro Jose Cuadrado Machado" textFill="WHITE" />
+            <Label layoutX="27.0" layoutY="158.0" text="Universidad de Córdoba - Sistemas Operativos - 2017 II" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
