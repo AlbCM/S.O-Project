@@ -29,7 +29,7 @@ import Models.Process;
  *
  * @author macha
  */
-public class ChartLongerTime implements Initializable{
+public class ChartsController implements Initializable{
     @FXML
     private BarChart<?, ?> LongTimeChart;
              
@@ -47,7 +47,7 @@ public class ChartLongerTime implements Initializable{
     
    
     
-    public ChartLongerTime(int option){
+    public ChartsController(int option){
         this.option = option;
         this.service = DataService.getInstance();
         switch(option){

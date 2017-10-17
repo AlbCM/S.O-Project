@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
-import javafx.beans.property.IntegerProperty;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +25,6 @@ import javafx.stage.StageStyle;
 import java.io.*;
 import java.net.URL;
 import java.util.List;
-import java.util.Queue;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -126,7 +124,7 @@ public class MainController implements Initializable {
     public void plot (int option) throws IOException{
         // Load FXML View
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/chartLongerTime.fxml"));
-        fxmlLoader.setController(new ChartLongerTime(option));
+        fxmlLoader.setController(new ChartsController(option));
         Parent root1 = fxmlLoader.load();
 
         Stage stage = new Stage();
@@ -142,7 +140,7 @@ public class MainController implements Initializable {
 
     public void report(int option) throws IOException {
         // Load FXML View
-        FXMLLoader fxmlLoader = new FXMLLoader(ChartLongerTime.class.getResource("/Views/report.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChartsController.class.getResource("/Views/report.fxml"));
         fxmlLoader.setController(new ReportController(option));
         Parent root1 = (Parent) fxmlLoader.load();
 
