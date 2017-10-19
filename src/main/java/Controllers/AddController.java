@@ -21,6 +21,8 @@ import Models.Process;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
+import javax.swing.*;
+
 
 public class AddController implements Initializable {
 
@@ -50,6 +52,7 @@ public class AddController implements Initializable {
         Process process = new Process();
         process.setProcessName(NameEntry.getText());
         process.setQuantum(Integer.parseInt(QuantumEntry.getText()));
+        // set source property
         process.setSourceFile(SourceFileEntry.getText());
         process.setPid(String.valueOf(process.getId()));
         if(service.Ready.isEmpty()){
@@ -62,8 +65,10 @@ public class AddController implements Initializable {
         service.Ready.add(process);
 
         // Close this window.
+
         Stage stage = (Stage) SaveButton.getScene().getWindow();
         stage.close();
+
     }
 
 

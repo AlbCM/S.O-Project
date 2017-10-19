@@ -1,8 +1,14 @@
 package Controllers;
 
+import Classes.IgnoreInheritedIntrospector;
+import Classes.Main;
 import Models.DataService;
 import Models.Process;
 import Models.ProcessList;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
@@ -22,10 +28,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MainController implements Initializable {
 
@@ -70,6 +78,22 @@ public class MainController implements Initializable {
             });
         }
 
+
+    }
+
+    public void createXML(){
+        // Generates XML File from Ready list
+        fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("XML File", "*.xml")
+        );
+        File saveFile = fileChooser.showSaveDialog(Main.getPrimaryStage());
+
+        try {
+            serializeXMLToFile(saveFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -206,6 +230,23 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public void serializeXMLToFile(File file) throws FileNotFoundException {
+        JacksonXmlModule module = new JacksonXmlModule();
+        module.setDefaultUseWrapper(true);
+        ObjectMapper xmlMapper = new XmlMapper(module);
+
+        ProcessList obj = new ProcessList();
+        obj.setProcess(service.Ready.stream().collect(Collectors.toList()));
+        try {
+            xmlMapper.setAnnotationIntrospector(new IgnoreInheritedIntrospector());
+            xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+            xmlMapper.writeValue(file, obj);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String inputStreamToString(InputStream is) throws IOException {

@@ -1,5 +1,7 @@
 package Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import javafx.beans.property.IntegerProperty;
@@ -14,24 +16,31 @@ public class Process extends Thread {
 
 
     // Properties
-    @JacksonXmlProperty(localName = "Name")
-    private StringProperty processName = new SimpleStringProperty();
 
+    @JsonProperty("Pid")
     @JacksonXmlProperty(localName = "Pid")
     private StringProperty pid = new SimpleStringProperty();
 
+    @JsonProperty("Name")
+    @JacksonXmlProperty(localName = "Name")
+    private StringProperty processName = new SimpleStringProperty();
+
+    @JsonProperty("Quantum")
     @JacksonXmlProperty(localName = "Quantum")
     private IntegerProperty quantum = new SimpleIntegerProperty();
 
+    @JsonProperty("SourceFile")
     @JacksonXmlProperty(localName = "SourceFile")
     private StringProperty sourceFile = new SimpleStringProperty();
 
+    @JsonIgnore
     private IntegerProperty executions = new SimpleIntegerProperty(0);
-
+    @JsonIgnore
     private IntegerProperty arrivalTime = new SimpleIntegerProperty(0);
 
 
     // Attributes
+    @JsonIgnore
     public boolean finished = false;
     private DataService service = DataService.getInstance();
 
@@ -57,6 +66,7 @@ public class Process extends Thread {
     }
 
     // Getters and Setters
+    @JacksonXmlProperty(localName = "Name")
     public String getProcessName() {
         return processName.get();
     }

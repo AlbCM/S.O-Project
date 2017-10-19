@@ -7,6 +7,7 @@ import Views.ExecutingCellView;
 import Views.FinishedCellView;
 import Views.ReadyCellView;
 import Views.WaitingCellView;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -32,13 +33,18 @@ public class ViewController implements Initializable {
     @FXML
     private JFXListView<Process> Finished = new JFXListView<>();
 
+    @FXML
+    private JFXButton stopButton;
+
 
     private DataService service = DataService.getInstance();
 
     public void start() {
         // Do things that are reliant upon the FXML being loaded
-
         Task<Void> task = createTask();
+        stopButton.setOnAction( x -> {
+            task.cancel();
+        });
         task.setOnSucceeded((WorkerStateEvent event) -> {
             System.out.println("Finished");
         });
@@ -171,6 +177,9 @@ public class ViewController implements Initializable {
         Waiting.setItems(service.Waiting);
         Finished.setItems(service.Finished);
 
+
+
+
         // Rutina para determinar el turno
         // Cuando se sabe quien va ejecutarse pasarlo a la view de ejecución y quitarlo de la lista de LISTO
         // Ejecutar el metodo run del proceso seleccionado
@@ -178,7 +187,7 @@ public class ViewController implements Initializable {
             // Esperar por n ms
         // Cuando termino dependiendo si hace falta pasarlo a Espera o si no a terminado
 
-        start();
+        //start();
     }
 
 

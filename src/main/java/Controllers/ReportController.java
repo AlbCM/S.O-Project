@@ -47,6 +47,9 @@ public class ReportController implements Initializable {
     @FXML
     private TableColumn<Process, Integer> arrivalTime;
 
+    @FXML
+    private TableColumn<Process, Integer> executions;
+
     
     private ObservableList<Process> list = FXCollections.emptyObservableList();
     
@@ -106,6 +109,7 @@ public class ReportController implements Initializable {
        quantum.setCellValueFactory(value -> value.getValue().quantumProperty().asObject());
        sourceFile.setCellValueFactory( data -> data.getValue().sourceFileProperty());
        arrivalTime.setCellValueFactory( data -> data.getValue().arrivalTimeProperty().asObject());
+        executions.setCellValueFactory( data -> data.getValue().executionsProperty().asObject());
 
        finalizacion.setCellValueFactory((cell) -> {
            int intValue = cell.getValue().ExecutionTime();

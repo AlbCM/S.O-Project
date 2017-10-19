@@ -135,3 +135,5 @@
 .table-view .column-header .label {
 
 }
+
+.chart-bar { -fx-bar-fill: #C20114; }

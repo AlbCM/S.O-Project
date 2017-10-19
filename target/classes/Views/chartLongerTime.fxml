@@ -15,7 +15,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <BarChart fx:id="LongTimeChart" prefHeight="395.0" prefWidth="431.0">
+      <BarChart styleClass="@styles/main.css" fx:id="LongTimeChart" prefHeight="395.0" prefWidth="431.0">
         <xAxis>
           <CategoryAxis label="Nombre del proceso" side="BOTTOM" fx:id="x" />
         </xAxis>
