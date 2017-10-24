@@ -73,12 +73,12 @@
                         <MenuItem mnemonicParsing="false" onAction="#plotChartST" text="Grafico de barra para los 5 menores tiempos de finalizacion" />
                   </items>
                 </Menu>
-                  <Menu  mnemonicParsing="false" text="Ayuda">
+                  <Menu mnemonicParsing="false" text="Ayuda">
                      <graphic>
                         <SVGPath content="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z" scaleX="0.75" scaleY="0.75" style="-fx-fill: white; -fx-graphic-size: 12;" />
                      </graphic>
                       <items>
-                          <MenuItem mnemonicParsing="false" onAction="#showCredentials" text="Acerca de" >
+                          <MenuItem mnemonicParsing="false" onAction="#showCredentials" text="Acerca de">
                               <graphic>
                                   <SVGPath content="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" scaleX="0.75" scaleY="0.75" style="-fx-fill: white; -fx-graphic-size: 12;" />
                               </graphic>
@@ -91,9 +91,9 @@
                   <String fx:value="context-menu" />
                </styleClass>
             </MenuBar>
-            <JFXButton buttonType="RAISED" layoutX="497.0" layoutY="474.0" onAction="#reset" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #C51D34;" text="LIMPIAR" textFill="WHITE">
+            <JFXButton fx:id="ResetButton" buttonType="RAISED" layoutX="391.0" layoutY="474.0" onAction="#reset" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #C51D34;" text="LIMPIAR" textFill="WHITE">
                <graphic>
-                  <SVGPath content="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" fill="WHITE" />
+                  <SVGPath content="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="WHITE" />
                </graphic>
             </JFXButton>
             <JFXButton fx:id="StartButton" buttonType="RAISED" layoutX="605.0" layoutY="474.0" onAction="#beginScheduling" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #C51D34;" text="INICIAR" textFill="WHITE">
@@ -119,6 +119,11 @@
                   <Font size="11.0" />
                </font>
             </Text>
+            <JFXButton fx:id="ReviewButton" buttonType="RAISED" layoutX="498.0" layoutY="472.0" onAction="#beginScheduling" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #C51D34;" text="REVISAR" textFill="WHITE">
+               <graphic>
+                  <SVGPath content="M12,5V1L7,6L12,11V7A6,6 0 0,1 18,13A6,6 0 0,1 12,19A6,6 0 0,1 6,13H4A8,8 0 0,0 12,21A8,8 0 0,0 20,13A8,8 0 0,0 12,5Z" fill="WHITE" />
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
+import com.sun.org.glassfish.external.statistics.annotations.Reset;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.transformation.SortedList;
@@ -51,6 +52,11 @@ public class MainController implements Initializable {
     private TableColumn<Process, String> SourceFileColumn;
     @FXML
     private JFXButton StartButton;
+    @FXML
+    private JFXButton ReviewButton;
+    @FXML
+    private JFXButton ResetButton;
+
     @FXML
     private Text MessageLabel;
 
@@ -272,6 +278,14 @@ public class MainController implements Initializable {
 
         // Validate start button disable binding
         StartButton.disableProperty().bind(listSize.isEqualTo(0));
+
+        ReviewButton.disableProperty().bind(Bindings.size(service.Finished).isEqualTo(0));
+
+        ResetButton.disableProperty()
+                .bind(
+                    listSize.isEqualTo(0).and(
+                        Bindings.size(service.Finished).isEqualTo(0)
+                ));
 
         // setting table columns
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().processNameProperty());
