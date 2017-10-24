@@ -58,15 +58,24 @@ public class ViewController implements Initializable {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                int size = service.Ready.size();
-                // start every process
-                for(int i=0; i<size; i++){
-                    Task(service.Ready.get(0));
+
+                while (!service.Ready.isEmpty() )
+                {
+                    while(service.Waiting.size() <= 2){
+                        Task(service.Ready.get(0)); // send first
+                    }
+
+                    // Needs to free waiting queue
+                    while(service.Waiting.size() > 2){
+                        Task(service.Waiting.get(0));
+                    }
+
                 }
-                // middle
                 while(!service.Waiting.isEmpty()){
                     Task(service.Waiting.get(0));
                 }
+
+
                 return null;
             }
         };
@@ -100,6 +109,9 @@ public class ViewController implements Initializable {
                     writer.write(buffer[i]);
                 }
             }
+            if(!reader.ready()){
+                p.finished = true;
+            }
             // Aumentamos el numero de ejecuciones
             p.setExecutions(p.getExecutions() + 1);
 
@@ -123,7 +135,7 @@ public class ViewController implements Initializable {
                 service.Waiting.remove(p);
                 ((MySkin) Waiting.getSkin()).refresh();
             }
-            Thread.sleep(200);
+            Thread.sleep(1000);
 
             // Lo ponemos en ejecución
             service.Executing.add(p);
@@ -136,13 +148,11 @@ public class ViewController implements Initializable {
             // Esperamos
             Thread.sleep(1000);
 
-
-
             // Lo sacamos de ejecución
             service.Executing.remove(p);
             ((MySkin) Executing.getSkin()).refresh();
 
-            Thread.sleep(200);
+            Thread.sleep(1000);
 
             // SI no ha terminado Lo ponemos en espera
             if(!p.finished){
